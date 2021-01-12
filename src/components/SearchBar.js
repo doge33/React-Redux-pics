@@ -9,8 +9,6 @@ export default class SearchBar extends React.Component {
   
   state = {term: ''};
 
-  // handleFormSubmit
-  
   handleFormSubmit = (evt) => {
     evt.preventDefault(); //prevent refresh
     //console.log(this.state.term) //this line gives error: "this" is undefined! 
