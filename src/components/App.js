@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from "axios";
+import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
+
 
 export default class App extends React.Component {
 
@@ -8,11 +9,9 @@ export default class App extends React.Component {
 
   handleSearchSubmit = async (term) => {
     
-    const response = await axios.get("https://api.unsplash.com/search/photos", {
+    //instead of using axios.get, just import unspalsh and use some of the default settings.
+    const response = await unsplash.get("/search/photos", {
       params: {query: term},
-      headers:{
-        Authorization: 'Client-ID VVW5Cs-edj4xKtaVTk1O0KNI_g99vRB9FNEEwCnVb-4'
-      }
     }); 
     console.log(this.state); // => this is gonna give you the this context when it's actually called in the child compo
     this.setState({images: response.data.results});
