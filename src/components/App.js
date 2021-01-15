@@ -1,6 +1,7 @@
 import React from 'react';
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
 
 export default class App extends React.Component {
@@ -13,7 +14,7 @@ export default class App extends React.Component {
     const response = await unsplash.get("/search/photos", {
       params: {query: term},
     }); 
-    console.log(this.state); // => this is gonna give you the this context when it's actually called in the child compo
+    //console.log(this.state); // => "this" is gonna give you the this context when it's actually called in the child compo
     this.setState({images: response.data.results});
   };
 
@@ -21,7 +22,7 @@ export default class App extends React.Component {
     return (
       <div className="ui container" style={{marginTop: "10px"}}>
         <SearchBar onSearchSubmit={this.handleSearchSubmit}/>
-        Found: {this.state.images.length} images
+        <ImageList images={this.state.images}/>
         
       </div>
     );
